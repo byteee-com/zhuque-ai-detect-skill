@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="356" viewBox="0 0 1200 356" role="img" aria-labelledby="title desc">
+  <title id="title">Zhuque AI Detection</title>
+  <desc id="desc">A vermilion bird mark beside the Zhuque wordmark on a dark background.</desc>
+  <defs>
+    <linearGradient id="ground" x2="1" y2="1" gradientUnits="objectBoundingBox">
+      <stop stop-color="#151317"/>
+      <stop offset=".58" stop-color="#20151a"/>
+      <stop offset="1" stop-color="#351a1d"/>
+    </linearGradient>
+    <radialGradient id="glow" cx=".75" cy=".44" r=".56">
+      <stop stop-color="#f25e43" stop-opacity=".21"/>
+      <stop offset="1" stop-color="#f25e43" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="wing" x1="0" y1="1" x2="1" y2="0">
+      <stop stop-color="#ac2f37"/>
+      <stop offset=".63" stop-color="#f15b45"/>
+      <stop offset="1" stop-color="#ffb17d"/>
+    </linearGradient>
+    <pattern id="grid" width="28" height="28" patternUnits="userSpaceOnUse">
+      <path d="M28 0H0V28" fill="none" stroke="#ffaf93" stroke-opacity=".14"/>
+    </pattern>
+    <clipPath id="frame"><rect width="1200" height="356" rx="20"/></clipPath>
+  </defs>
+  <g clip-path="url(#frame)">
+    <rect width="1200" height="356" fill="url(#ground)"/>
+    <rect width="1200" height="356" fill="url(#glow)"/>
+    <rect x="628" width="572" height="356" fill="url(#grid)" opacity=".53"/>
+    <path d="M0 0H1200" stroke="#f56a53" stroke-width="5"/>
+    <path d="M650 26V330" stroke="#ef9478" stroke-opacity=".21" stroke-dasharray="3 7"/>
+    <path d="M696 30h22m-22 0v22m454-22h-22m22 0v22M696 326h22m-22 0v-22m454 22h-22m22 0v-22" fill="none" stroke="#ffb699" stroke-opacity=".42"/>
+    <circle cx="935" cy="170" r="123" fill="none" stroke="#f09876" stroke-opacity=".24"/>
+    <circle cx="935" cy="170" r="148" fill="none" stroke="#f09876" stroke-opacity=".19" stroke-dasharray="4 7"/>
+    <path d="M759 170h352m-176-157v316" stroke="#fb9b7b" stroke-opacity=".16" stroke-dasharray="2 7"/>
+    <path d="M773 252c58-16 106-41 142-76-40 15-93 13-146-13 60 6 115-2 154-32-43 10-97-3-139-32 65 14 115 8 159-18 24-15 48-17 66 0l41 14-33 11c-12 43-45 77-87 99-37 20-77 29-125 30 27 9 50 10 79 5-30 29-73 53-119 63l41-37z" fill="url(#wing)"/>
+    <path d="M773 252c52-14 95-32 129-56m-132-33c56 3 107-8 153-32m-139-32c56 17 107 12 159-18m-138 155c58-3 105-15 144-38" fill="none" stroke="#ffbea0" stroke-opacity=".65" stroke-width="1.7" stroke-linecap="round"/>
+    <circle cx="998" cy="93" r="3.2" fill="#29171c"/>
+    <path d="m1048 95 14 0m-14 8 9 0M755 312h60" stroke="#f29c82" stroke-opacity=".55" stroke-width="2"/>
+    <g font-family="Arial, Helvetica, sans-serif">
+      <rect x="56" y="49" width="198" height="32" rx="16" fill="#492727"/>
+      <circle cx="72" cy="65" r="3" fill="#ff8965"/>
+      <text x="86" y="70" fill="#ffd0be" font-size="13" font-weight="700" letter-spacing="2">AGENT SKILL / CLI</text>
+      <text x="51" y="173" fill="#fff3e9" font-size="92" font-weight="700" letter-spacing="-4">Zhuque</text>
+      <text x="58" y="228" fill="#fb906c" font-size="34" font-weight="700" letter-spacing="4">AI DETECTION</text>
+      <path d="M58 260H567" stroke="#ffad96" stroke-opacity=".22"/>
+      <text x="58" y="299" fill="#e3c6bf" font-size="20">Text reports powered by EdgeOne Makers</text>
+    </g>
+  </g>
+</svg>

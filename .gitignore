@@ -1,0 +1,12 @@
+# Local API credentials
+.env
+.env.*
+credentials.json
+.credentials-*
+
+# Python and editor artifacts
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+.DS_Store

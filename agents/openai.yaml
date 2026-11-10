@@ -1,0 +1,4 @@
+interface:
+  display_name: "朱雀 AI 检测"
+  short_description: "默认通过 EdgeOne Makers 检测文本，提供朱雀官网手动检测链接"
+  default_prompt: "用 $zhuque-ai-detect-skill 通过普通 Makers API 检测这篇稿件，并列出值得复核的段落。"
