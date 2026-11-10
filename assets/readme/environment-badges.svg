@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="468" height="25" viewBox="0 0 468 25" role="img" aria-labelledby="title">
+  <title id="title">Python 3.10+, macOS, Linux, Windows, and EdgeOne Makers API</title>
+  <g font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="600" fill="#fff">
+    <rect width="106" height="25" rx="5" fill="#2b2730"/>
+    <path d="M55 0h46a5 5 0 0 1 5 5v15a5 5 0 0 1-5 5H55z" fill="#355c75"/>
+    <text x="28" y="16.5" text-anchor="middle">Python</text>
+    <text x="80" y="16.5" text-anchor="middle">3.10+</text>
+    <rect x="114" width="194" height="25" rx="5" fill="#2b2730"/>
+    <path d="M145 0h158a5 5 0 0 1 5 5v15a5 5 0 0 1-5 5H145z" fill="#8b4737"/>
+    <text x="130" y="16.5" text-anchor="middle">OS</text>
+    <text x="227" y="16.5" text-anchor="middle">macOS / Linux / Windows</text>
+    <rect x="316" width="152" height="25" rx="5" fill="#2b2730"/>
+    <path d="M355 0h108a5 5 0 0 1 5 5v15a5 5 0 0 1-5 5H355z" fill="#3c6352"/>
+    <text x="336" y="16.5" text-anchor="middle">API</text>
+    <text x="411" y="16.5" text-anchor="middle">EdgeOne Makers</text>
+  </g>
+</svg>

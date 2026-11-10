@@ -4,6 +4,8 @@
 
 # 朱雀 AI 检测 Skill
 
+![运行环境为 Python 3.10+ 和 macOS、Linux 或 Windows，默认接口为 EdgeOne Makers API](assets/readme/environment-badges.svg)
+
 把稿件交给 Agent，就能用腾讯朱雀检测 AI 生成特征、定位可疑分段，或比较两版稿件。**文本默认走 EdgeOne Makers API。**
 
 **简体中文** · [English](README.en.md)　|　[功能列表](#features) · [安装 Skill](#install) · [配置 Key](#key) · [使用方法](#usage) · [命令行](#cli)
@@ -27,7 +29,7 @@ API 检测会把你指定的内容发送给腾讯。内容占比与分段置信�
 
 ## 安装 Skill
 
-需要 **Python 3.10+**，以及能在本机加载 Agent Skills、运行 Python 和访问腾讯云的客户端。
+运行环境为 **Python 3.10+**，下文提供 macOS、Linux 和 Windows PowerShell 安装方式。Agent 需能加载本地 Skill、运行 Python 和访问腾讯云。
 
 | Agent | 安装位置或方式 | 在对话中调用 |
 | --- | --- | --- |
@@ -36,7 +38,7 @@ API 检测会把你指定的内容发送给腾讯。内容占比与分段置信�
 | **Cursor** | `~/.cursor/skills/zhuque-ai-detect-skill/`，也可复用 `~/.agents/skills/` | 在本地 Agent 对话中用 `/` 选择 Skill。 [官方文档](https://cursor.com/docs/skills) |
 | **WorkBuddy** | 「技能 → 添加技能 → 上传技能」，导入 ZIP 包 | 在对话中点名 `zhuque-ai-detect-skill`。 [官方文档](https://www.workbuddy.cn/docs/workbuddy/From-Beginner-to-Expert-Guide/Function-Description/Skills-Market) |
 
-Codex 已完成本地安装和 API 实测。其他客户端的安装入口按官方文档列出，尚未逐个做端到端验证。
+已实测 **macOS 上的 Codex**，覆盖本地安装和 API 检测。其他系统和客户端的步骤按各平台文档列出，尚未逐一实测。
 
 先克隆项目，或在 GitHub 仓库页面点 **Code → Download ZIP**，下载后解压。 [GitHub 仓库](https://github.com/byteee-com/zhuque-ai-detect-skill)
 

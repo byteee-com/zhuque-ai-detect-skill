@@ -4,6 +4,8 @@
 
 # Zhuque AI Detection Skill
 
+![Runtime: Python 3.10+ on macOS, Linux, or Windows. Default API: EdgeOne Makers.](assets/readme/environment-badges.svg)
+
 Give your agent a draft to check for AI-generated content, locate flagged segments, or compare two revisions. **Text checks use Tencent Cloud EdgeOne Makers by default.**
 
 [简体中文](README.md) · **English**　|　[Features](#features) · [Install](#install) · [Configure your key](#key) · [Usage](#usage) · [CLI](#cli)
@@ -27,7 +29,7 @@ API checks send the content you select to Tencent. Reports show content shares a
 
 ## Install the skill
 
-You need **Python 3.10 or later** and a local agent that can load Agent Skills, run Python, and reach Tencent Cloud.
+Use **Python 3.10 or later** on macOS, Linux, or Windows PowerShell. Your agent needs to load local skills, run Python, and reach Tencent Cloud.
 
 | Agent | Install location or method | Invoke in chat |
 | --- | --- | --- |
@@ -36,7 +38,7 @@ You need **Python 3.10 or later** and a local agent that can load Agent Skills, 
 | **Cursor** | `~/.cursor/skills/zhuque-ai-detect-skill/`, or reuse `~/.agents/skills/` | Select the skill from the `/` menu in a local Agent chat. [Official guide](https://cursor.com/docs/skills) |
 | **WorkBuddy** | **Skills → Add Skill → Upload Skill**, then import a ZIP | Name `zhuque-ai-detect-skill` in chat. [Official guide](https://www.workbuddy.cn/docs/workbuddy/From-Beginner-to-Expert-Guide/Function-Description/Skills-Market) |
 
-Codex has been tested with a local installation and a live API call. The other entries follow the official installation guides and have yet to be tested end to end.
+Local installation and live API checks have been verified in **Codex on macOS**. The other systems and clients follow their documented installation steps and have yet to be tested end to end.
 
 Clone the project, or select **Code → Download ZIP** on GitHub and extract it. [GitHub repository](https://github.com/byteee-com/zhuque-ai-detect-skill)
 
