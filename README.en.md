@@ -29,52 +29,36 @@ API checks send the content you select to Tencent. Reports show content shares a
 
 ## Install the skill
 
-Use **Python 3.10 or later** on macOS, Linux, or Windows PowerShell. Your agent needs to load local skills, run Python, and reach Tencent Cloud.
+Install with the [Skills CLI](https://github.com/vercel-labs/skills). The installer needs **Node.js 22.20 or later** (including `npx`) and Git. Detection needs **Python 3.10 or later** and access to Tencent Cloud from the agent's runtime.
 
-| Agent | Install location or method | Invoke in chat |
+For Codex, run the same command on macOS, Linux, or Windows PowerShell.
+
+```sh
+npx skills add byteee-com/zhuque-ai-detect-skill --global --agent codex --yes
+```
+
+For Claude Code or Cursor, replace `--agent codex` with the corresponding value below. Omit `--global` to install for the current project only. Start a new agent chat after installation.
+
+| Agent | `--agent` value or install method | Invoke in chat |
 | --- | --- | --- |
-| **Codex** | `~/.agents/skills/zhuque-ai-detect-skill/` | Type `$` and select the skill. [Official guide](https://learn.chatgpt.com/docs/build-skills) |
-| **Claude Code** | `~/.claude/skills/zhuque-ai-detect-skill/` | Type `/zhuque-ai-detect-skill`. [Official guide](https://code.claude.com/docs/en/skills) |
-| **Cursor** | `~/.cursor/skills/zhuque-ai-detect-skill/`, or reuse `~/.agents/skills/` | Select the skill from the `/` menu in a local Agent chat. [Official guide](https://cursor.com/docs/skills) |
+| **Codex** | `codex` | Type `$` and select the skill. [Official guide](https://developers.openai.com/codex/skills) |
+| **Claude Code** | `claude-code` | Type `/zhuque-ai-detect-skill`. [Official guide](https://code.claude.com/docs/en/skills) |
+| **Cursor** | `cursor` | Select the skill from the `/` menu in a local Agent chat. [Official guide](https://cursor.com/docs/skills) |
 | **WorkBuddy** | **Skills → Add Skill → Upload Skill**, then import a ZIP | Name `zhuque-ai-detect-skill` in chat. [Official guide](https://www.workbuddy.cn/docs/workbuddy/From-Beginner-to-Expert-Guide/Function-Description/Skills-Market) |
 
-Local installation and live API checks have been verified in **Codex on macOS**. The other systems and clients follow their documented installation steps and have yet to be tested end to end.
-
-Clone the project, or select **Code → Download ZIP** on GitHub and extract it. [GitHub repository](https://github.com/byteee-com/zhuque-ai-detect-skill)
-
-```sh
-git clone https://github.com/byteee-com/zhuque-ai-detect-skill.git
-cd zhuque-ai-detect-skill
-```
-
-If you use GitHub over SSH, replace the first line with `git clone git@github.com:byteee-com/zhuque-ai-detect-skill.git`.
-
-- **Codex, Claude Code, and Cursor**: Name the folder containing `SKILL.md`, `scripts/`, and `references/` as `zhuque-ai-detect-skill` and place it in the location listed above. The installed folder should contain `SKILL.md` directly.
-- **WorkBuddy**: Zip that folder and import it through **Upload Skill**.
-
-Start a new agent chat after installation.
+Skills CLI installation for Codex, Claude Code, and Cursor has been verified on macOS. Live API checks have been verified in Codex.
 
 <details>
-<summary>Copy the skill from a terminal</summary>
+<summary>Install manually or import into WorkBuddy</summary>
 
-Run these commands in the extracted project directory that contains `SKILL.md`. They use the Codex location as an example. For Claude Code or Cursor, change the destination to the one in the table above.
+Select **Code → Download ZIP** in the [GitHub repository](https://github.com/byteee-com/zhuque-ai-detect-skill) and extract it, or clone the repository with Git.
 
-**Windows PowerShell**
+Put `SKILL.md`, `agents/`, `scripts/`, and `references/` in a folder named `zhuque-ai-detect-skill`.
 
-```powershell
-$skillDir = Join-Path $HOME '.agents\skills\zhuque-ai-detect-skill'
-New-Item -ItemType Directory -Force -Path $skillDir | Out-Null
-Copy-Item -Path .\SKILL.md, .\agents, .\scripts, .\references -Destination $skillDir -Recurse -Force
-```
-
-**macOS / Linux**
-
-```sh
-skill_dir="$HOME/.agents/skills/zhuque-ai-detect-skill"
-mkdir -p "$skill_dir"
-cp -R SKILL.md agents scripts references "$skill_dir/"
-```
-
+- **Codex**: Place the folder in `~/.agents/skills/`.
+- **Claude Code**: Place the folder in `~/.claude/skills/`.
+- **Cursor**: Place the folder in `~/.cursor/skills/`.
+- **WorkBuddy**: Zip the folder and import it through **Upload Skill**.
 </details>
 
 <a name="key"></a>
@@ -83,12 +67,25 @@ cp -R SKILL.md agents scripts references "$skill_dir/"
 
 Create a standard key under **Makers → Models → API Key** in the EdgeOne console. See the [Tencent Cloud setup guide](https://cloud.tencent.com/document/product/1552/137539).
 
-Run `setup` from the extracted project directory. Paste the key into your terminal when prompted and press Enter. Input is hidden and the script stores the key in your local user configuration. Run `setup` again to replace it.
+After the global installation above, open a terminal in the skill directory. For a project or manual installation, use the directory where you installed the skill.
 
-| OS | Configure your key | Check local configuration |
-| --- | --- | --- |
-| Windows PowerShell | `py -3 .\scripts\zhuque.py setup` | `py -3 .\scripts\zhuque.py doctor` |
-| macOS / Linux | `python3 scripts/zhuque.py setup` | `python3 scripts/zhuque.py doctor` |
+**macOS / Linux**
+
+```sh
+cd ~/.agents/skills/zhuque-ai-detect-skill
+python3 scripts/zhuque.py setup
+python3 scripts/zhuque.py doctor
+```
+
+**Windows PowerShell**
+
+```powershell
+Set-Location "$HOME\.agents\skills\zhuque-ai-detect-skill"
+py -3 .\scripts\zhuque.py setup
+py -3 .\scripts\zhuque.py doctor
+```
+
+Paste the key when `setup` prompts for it and press Enter. Input is hidden and the script stores the key in your local user configuration. Run `setup` again to replace the key.
 
 A `makers.status` of `ready` means the configuration is readable. Your first API check verifies that the key works. See the [API configuration reference](references/api.md) for environment variables and Enterprise Pro credentials.
 
@@ -136,7 +133,7 @@ Check the paths, formats, and readability without calling the API.
 
 ## Command line
 
-The Python CLI also runs on its own for local checks, scripts, and report export. Run these commands from the project directory. On Windows, replace `python3 scripts/zhuque.py` with `py -3 .\scripts\zhuque.py`.
+The Python CLI also runs on its own for local checks, scripts, and report export. Run these commands from the installed skill directory or repository root. On Windows, replace `python3 scripts/zhuque.py` with `py -3 .\scripts\zhuque.py`.
 
 ```sh
 python3 scripts/zhuque.py text --file draft.docx --paragraphs --format markdown
@@ -145,3 +142,11 @@ python3 scripts/zhuque.py batch --compare --paragraphs first.md revised.docx
 ```
 
 The CLI outputs JSON by default. See the [API configuration and CLI reference](references/api.md) for more options and error states.
+
+## About Byteee
+
+Byteee builds AI products and helps enterprises deploy AI in their workflows through Forward Deployed Engineering (FDE). [Company website](https://www.byteee.com)
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).

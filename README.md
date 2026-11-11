@@ -29,52 +29,36 @@ API 检测会把你指定的内容发送给腾讯。内容占比与分段置信�
 
 ## 安装 Skill
 
-运行环境为 **Python 3.10+**，下文提供 macOS、Linux 和 Windows PowerShell 安装方式。Agent 需能加载本地 Skill、运行 Python 和访问腾讯云。
+推荐用 [Skills CLI](https://github.com/vercel-labs/skills) 一键安装。先准备 **Node.js 22.20+**（含 `npx`）和 Git。检测本身需要 **Python 3.10+**，以及能访问腾讯云的 Agent 运行环境。
 
-| Agent | 安装位置或方式 | 在对话中调用 |
+在终端运行。下面以 Codex 为例，macOS、Linux 和 Windows PowerShell 使用同一条命令。
+
+```sh
+npx skills add byteee-com/zhuque-ai-detect-skill --global --agent codex --yes
+```
+
+用 Claude Code 或 Cursor 时，将 `--agent codex` 改为下表的参数。只想安装到当前项目时，去掉 `--global`。安装后新开一个 Agent 对话。
+
+| Agent | `--agent` 参数或安装方式 | 在对话中调用 |
 | --- | --- | --- |
-| **Codex** | `~/.agents/skills/zhuque-ai-detect-skill/` | 输入 `$` 选择 Skill。 [官方文档](https://learn.chatgpt.com/docs/build-skills) |
-| **Claude Code** | `~/.claude/skills/zhuque-ai-detect-skill/` | 输入 `/zhuque-ai-detect-skill`。 [官方文档](https://code.claude.com/docs/en/skills) |
-| **Cursor** | `~/.cursor/skills/zhuque-ai-detect-skill/`，也可复用 `~/.agents/skills/` | 在本地 Agent 对话中用 `/` 选择 Skill。 [官方文档](https://cursor.com/docs/skills) |
+| **Codex** | `codex` | 输入 `$` 选择 Skill。 [官方文档](https://developers.openai.com/codex/skills) |
+| **Claude Code** | `claude-code` | 输入 `/zhuque-ai-detect-skill`。 [官方文档](https://code.claude.com/docs/en/skills) |
+| **Cursor** | `cursor` | 在本地 Agent 对话中用 `/` 选择 Skill。 [官方文档](https://cursor.com/docs/skills) |
 | **WorkBuddy** | 「技能 → 添加技能 → 上传技能」，导入 ZIP 包 | 在对话中点名 `zhuque-ai-detect-skill`。 [官方文档](https://www.workbuddy.cn/docs/workbuddy/From-Beginner-to-Expert-Guide/Function-Description/Skills-Market) |
 
-已实测 **macOS 上的 Codex**，覆盖本地安装和 API 检测。其他系统和客户端的步骤按各平台文档列出，尚未逐一实测。
-
-先克隆项目，或在 GitHub 仓库页面点 **Code → Download ZIP**，下载后解压。 [GitHub 仓库](https://github.com/byteee-com/zhuque-ai-detect-skill)
-
-```sh
-git clone https://github.com/byteee-com/zhuque-ai-detect-skill.git
-cd zhuque-ai-detect-skill
-```
-
-已配置 GitHub SSH 的用户，可以把第一行换成 `git clone git@github.com:byteee-com/zhuque-ai-detect-skill.git`。
-
-- **Codex、Claude Code、Cursor**：将包含 `SKILL.md`、`scripts/` 和 `references/` 的目录命名为 `zhuque-ai-detect-skill`，放到上表对应位置。安装目录里应直接看到 `SKILL.md`。
-- **WorkBuddy**：把这个同名目录压成 ZIP，再从「上传技能」导入。
-
-安装后开一个新的 Agent 对话。
+已在 macOS 验证 Skills CLI 能安装到 Codex、Claude Code 和 Cursor 的目录，并用 Codex 完成实际 API 检测。
 
 <details>
-<summary>使用终端复制到 Skill 目录</summary>
+<summary>手动安装或导入 WorkBuddy</summary>
 
-在解压后能看到 `SKILL.md` 的项目目录运行。命令以 Codex 的路径为例，Claude Code 和 Cursor 按上表替换目标目录。
+在 [GitHub 仓库](https://github.com/byteee-com/zhuque-ai-detect-skill) 点 **Code → Download ZIP** 并解压，也可以用 Git 克隆。
 
-**Windows PowerShell**
+把 `SKILL.md`、`agents/`、`scripts/` 和 `references/` 放在名为 `zhuque-ai-detect-skill` 的目录中。
 
-```powershell
-$skillDir = Join-Path $HOME '.agents\skills\zhuque-ai-detect-skill'
-New-Item -ItemType Directory -Force -Path $skillDir | Out-Null
-Copy-Item -Path .\SKILL.md, .\agents, .\scripts, .\references -Destination $skillDir -Recurse -Force
-```
-
-**macOS / Linux**
-
-```sh
-skill_dir="$HOME/.agents/skills/zhuque-ai-detect-skill"
-mkdir -p "$skill_dir"
-cp -R SKILL.md agents scripts references "$skill_dir/"
-```
-
+- **Codex**：把该目录放到 `~/.agents/skills/`。
+- **Claude Code**：把该目录放到 `~/.claude/skills/`。
+- **Cursor**：把该目录放到 `~/.cursor/skills/`。
+- **WorkBuddy**：把该目录压缩为 ZIP，再通过「上传技能」导入。
 </details>
 
 <a name="key"></a>
@@ -83,12 +67,25 @@ cp -R SKILL.md agents scripts references "$skill_dir/"
 
 在 EdgeOne 控制台的 **Makers → Models → API Key** 创建普通 Makers Key。参见 [腾讯云朱雀接入文档](https://cloud.tencent.com/document/product/1552/137539)。
 
-在解压后的项目目录运行 `setup`，按提示把 Key 粘贴到终端并回车。输入不会回显，脚本会保存到当前用户的本机配置。换 Key 时重新运行 `setup`。
+按上面的全局命令安装后，在终端进入 Skill 目录。项目级或手动安装时，进入对应的实际目录。
 
-| 系统 | 配置 Key | 检查配置 |
-| --- | --- | --- |
-| Windows PowerShell | `py -3 .\scripts\zhuque.py setup` | `py -3 .\scripts\zhuque.py doctor` |
-| macOS / Linux | `python3 scripts/zhuque.py setup` | `python3 scripts/zhuque.py doctor` |
+**macOS / Linux**
+
+```sh
+cd ~/.agents/skills/zhuque-ai-detect-skill
+python3 scripts/zhuque.py setup
+python3 scripts/zhuque.py doctor
+```
+
+**Windows PowerShell**
+
+```powershell
+Set-Location "$HOME\.agents\skills\zhuque-ai-detect-skill"
+py -3 .\scripts\zhuque.py setup
+py -3 .\scripts\zhuque.py doctor
+```
+
+运行 `setup` 时按提示粘贴 Key 并回车。输入不会回显，脚本会保存到当前用户的本机配置。换 Key 时再次运行 `setup`。
 
 `doctor` 显示 `makers.status: ready` 表示配置可读取。第一次 API 检测会验证 Key 是否有效。环境变量和企业 Pro 的配置见 [API 配置说明](references/api.md)。
 
@@ -136,7 +133,7 @@ cp -R SKILL.md agents scripts references "$skill_dir/"
 
 ## 命令行
 
-Python 命令也可以独立使用，适合本地检查、脚本集成和报告导出。以下命令在项目目录运行。Windows 用户将 `python3 scripts/zhuque.py` 换成 `py -3 .\scripts\zhuque.py`。
+Python 命令也可以独立使用，适合本地检查、脚本集成和报告导出。在已安装的 Skill 目录或仓库根目录运行。Windows 用户将 `python3 scripts/zhuque.py` 换成 `py -3 .\scripts\zhuque.py`。
 
 ```sh
 python3 scripts/zhuque.py text --file draft.docx --paragraphs --format markdown
@@ -145,3 +142,13 @@ python3 scripts/zhuque.py batch --compare --paragraphs first.md revised.docx
 ```
 
 命令行默认输出 JSON。更多参数和错误状态见 [API 配置与命令参考](references/api.md)。
+
+## 关于守一科技
+
+[守一科技官网](https://www.byteee.com)
+
+[![守一科技｜让 AI 真正进入工作与业务。自研 AI 产品，企业 AI 落地（FDE）。](assets/readme/byteee-banner.png)](https://www.byteee.com)
+
+## 开源许可
+
+本项目采用 [MIT 许可证](LICENSE)。

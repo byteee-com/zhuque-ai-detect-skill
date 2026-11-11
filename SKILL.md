@@ -9,7 +9,7 @@ description: 用腾讯朱雀检测 AI 生成特征。文本默认走 EdgeOne Mak
 
 | 请求 | 通道 |
 | --- | --- |
-| 文本、分段评分、批量文本、两版稿件对照 | 默认走普通 [Makers API](references/api.md)。未配置 Key 时请用户在自己的终端运行 `python3 scripts/zhuque.py setup`，Windows PowerShell 使用 `py -3 .\scripts\zhuque.py setup`。配置无效时用 `doctor` 查看原因 |
+| 文本、分段评分、批量文本、两版稿件对照 | 默认走普通 [Makers API](references/api.md)。未配置 Key 时请用户在已安装的 Skill 目录打开终端并运行 `python3 scripts/zhuque.py setup`，Windows PowerShell 使用 `py -3 .\scripts\zhuque.py setup`。配置无效时用 `doctor` 查看原因 |
 | 明确指定官网或浏览器 | 提供[文本检测](https://matrix.tencent.com/ai-detect/ai_gen_txt)或[图片与视频检测](https://matrix.tencent.com/ai-detect/ai_gen)链接，由用户手动检测 |
 | 图片或视频，未指定企业 Pro | 提供[官网手动检测链接](https://matrix.tencent.com/ai-detect/ai_gen) |
 | 明确指定企业 Pro | [Pro API](references/api.md)，支持同步检测文本和图片，可逐项批量。这个通道按次计费 |

@@ -2,7 +2,7 @@
 
 普通 Makers 的 Key 在 EdgeOne 控制台的 Makers → Models → API Key 创建。企业 Pro 需要已开通的企业网关、控制台分配的 HTTPS 网关域名和独立 API Key。企业调用会计费。见 [普通 Makers 文档](https://cloud.tencent.com/document/product/1552/137539)和[企业 Pro 文档](https://cloud.tencent.com/document/product/1552/135974)。
 
-脚本使用 Python 3.10+，运行时仅依赖标准库。配置普通 Makers 时，在项目目录打开自己的终端并运行 `setup`，按提示粘贴 Key。输入不回显，配置保存在当前用户的目录。换 Key 时再次运行 `setup`。
+脚本使用 Python 3.10+，运行时仅依赖标准库。配置普通 Makers 时，在已安装的 Skill 目录或仓库根目录打开自己的终端并运行 `setup`，按提示粘贴 Key。输入不回显，配置保存在当前用户的目录。换 Key 时再次运行 `setup`。
 
 | 系统 | 配置普通 Makers Key | 本地自检 |
 | --- | --- | --- |
